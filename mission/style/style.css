@@ -9,12 +9,3 @@
   font-weight: 400;
   font-style: normal;
 }
-.img {
-    background-image: url('./banner-image.png');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    width: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    
-}
