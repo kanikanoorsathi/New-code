@@ -13,7 +13,8 @@
     background-image: url('./banner-image.png');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 100%;
     width: auto;
-    color: brown;
+    background-color: rgba(0, 0, 0, 0.5);
+    
 }
