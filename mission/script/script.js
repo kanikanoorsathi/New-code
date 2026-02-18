@@ -42,6 +42,53 @@ const displayProductDetail = (product) => {
       `;
     document.getElementById("product_modal").showModal();
 };
+const loadTrendingProducts = () => {
+    const url = ("https://fakestoreapi.com/products");
+    fetch (url)
+    .then(res => res.json())
+    // .then((json) => displayTrendingProducts(json))
+    .then((json) => {
+        const filtered = json.filter(product => product.rating.rate >= 4);
+        const topThree =filtered.slice (0,3);
+        // const topThree =threeProducts.slice(0,3);
+        displayTrendingProducts(topThree);
+
+    } )
+   
+}
+const displayTrendingProducts = (products) =>{
+    const container = document.getElementById("trending-container");
+    container.innerHTML ="";
+    products.forEach(products => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <div class="bg-white rounded-xl shadow-sm py-10 px-5 space-y-4">
+                    <p class="font-light text-sm text-sky-400">${products.category}</p>
+                    <img class="w-40 h-40 mx-auto" src="${products.image}" alt="">
+                    <h2 class="font-medium text-xl">${products.title}</h2>
+                        <div class="flex items-center gap-2 mb-6">
+                                <div class="flex text-amber-400">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                   <i class="fa-solid fa-half-stroke"></i>
+                                   <i class="fa-solid fa-half-stroke"></i>
+                                </div>
+                                <span class="text-sm text-gray-500 font-medium">${products.rating.rate} (${products.rating.count})</span>
+                        </div>
+                    <div class="flex justify-between items-stretch">
+                        <h1 class="font-bold text-black-400 text-2xl">$${products.price}</h1>
+                        <div>
+                            <button onclick="loadProductDetail(${products.id})" class="btn" href=""><i class="fa-solid fa-eye"></i></button>
+                            <button class="btn" href=""><i class="fa-solid fa-cart-shopping"></i></button>
+                        </div>
+                    </div>
+                </div>
+        `;
+        container.append(div);
+    })
+}
 const loadAllProducts = () => {
     const url = ("https://fakestoreapi.com/products")
     //console.log(url)
@@ -138,3 +185,4 @@ const displaycategory = (categories) => {
 }
 loadcategories();
 loadAllProducts();
+loadTrendingProducts();
