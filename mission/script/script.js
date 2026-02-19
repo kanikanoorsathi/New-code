@@ -146,11 +146,25 @@ const displayAllProducts = (products) => {
                     </div>
                 </div>
         `;
+        loadingSpinner(false);
         productsContanner.append(card);
     })
 
 }
+
+const loadingSpinner=(status)=>{
+    if(status === true) {
+        document.getElementById("loading").classList.remove("hidden");
+        document.getElementById("products-contanner").classList.add("hidden");
+    } else{
+        document.getElementById("products-contanner").classList.remove("hidden");
+        document.getElementById("loading").classList.add("hidden");
+    }
+}
+
+
 const loadCatgoryProducts = (category) => {
+    loadingSpinner (true);
     fetch(`https://fakestoreapi.com/products/category/${category}`)
         // fetch("https://fakestoreapi.com/products/category/${category}")
         .then(res => res.json())
@@ -182,6 +196,7 @@ const displaycategory = (categories) => {
         `;
         btnAll.append(btnDiv)
     }
+    loadingSpinner(false);
 }
 loadcategories();
 loadAllProducts();
