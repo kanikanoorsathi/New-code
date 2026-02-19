@@ -18,7 +18,7 @@ const displayProductDetail = (product) => {
     const detailsBox = document.getElementById("details-container");
     detailsBox.innerHTML = `
                     <div class="grid grid-cols-1 md: grid-cols-2 gap-8">
-                        <img class="" src="${product.image}" alt="">
+                        <img class="my-auto" src="${product.image}" alt="">
                         <div>
                             <p class="font-light text-sm text-sky-400">${product.category}</p>
                             <h2 class="font-bold text-xl py-5">${product.title}</h2>
@@ -33,7 +33,7 @@ const displayProductDetail = (product) => {
                                 <span class="text-sm text-gray-500 font-medium">${product.rating.rate} (${product.rating.count})</span>
                             </div>
                             <p class="font-light text-sm">${product.description}</p>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between pt-5">
                                 <h2 class ="">$${product.price}</h2>
                                 <button class="btn btn-primary">Add To Cart</button>
                             </div>
