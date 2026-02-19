@@ -1,5 +1,6 @@
 
 
+
 const loadcategories = () => {
     fetch("https://fakestoreapi.com/products/categories")  // promise of response
         .then(res => res.json()) //promise of json data
